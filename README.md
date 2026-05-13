@@ -1,8 +1,8 @@
-# OpenClaw AgentKit 2.0 Bridge
+# cAgent
 
 **A robust JSON-RPC integration layer for autonomous AI-to-AI orchestration in OpenClaw.**
 
-This repository contains the patch and implementation for bridging **AgentKit 2.0** with the **OpenClaw** daemon, completely bypassing the legacy CLI argument parsing that frequently causes `400 INVALID_ARGUMENT` errors during AI-driven local terminal interactions.
+This repository contains the patch and implementation for **cAgent**, bridging **AgentKit 2.0** with the **OpenClaw** daemon, completely bypassing the legacy CLI argument parsing that frequently causes `400 INVALID_ARGUMENT` errors during AI-driven local terminal interactions.
 
 In addition, it provides a critical patch for a known bug in OpenClaw's `Gateway` system where `Error` objects fail JSON serialization during plugin state saves, which traditionally causes the OpenClaw Gateway to crash or fail to launch as a background LaunchAgent.
 
