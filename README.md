@@ -1,5 +1,8 @@
 # cAgent
 
+> **[🔥 Live Case Study: The Local Agent Factory](https://olbin.dev/factory.html)**  
+> *cAgent is not just a theoretical tool. It is the exported control bus of a 100-developer scale, autonomous AI factory currently operating across physically connected Apple Silicon nodes (Thunderbolt IP).*
+
 **A robust JSON-RPC integration layer for autonomous AI-to-AI orchestration in OpenClaw.**
 
 This repository contains the patch and implementation for **cAgent**, bridging **AgentKit 2.0** with the **OpenClaw** daemon, completely bypassing the legacy CLI argument parsing that frequently causes `400 INVALID_ARGUMENT` errors during AI-driven local terminal interactions.
