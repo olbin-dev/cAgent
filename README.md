@@ -72,7 +72,7 @@ With the Gateway active, external AI agents can dispatch instructions to OpenCla
 |---------|------|
 | [cAgent](https://github.com/olbin-dev/cAgent) | OpenClaw ↔ AgentKit JSON-RPC bridge *(this repo)* — [case study](https://olbin.dev/factory.html) |
 | [Vault Sync for Dropbox](https://github.com/olbin-dev/plugin) | Obsidian ↔ Dropbox bidirectional sync (iOS-ready) |
-| [Local LLM Brain Chat](https://github.com/olbin-dev/obisidian-Plugin-LocalLLM) | Obsidian ↔ local llama.cpp chat |
+| [Local LLM Brain Chat](https://github.com/olbin-dev/obisidian-Plugin-LocalLLM) | Obsidian ↔ local llama.cpp chat — [product page](https://olbin.dev/local-llm.html) |
 
 ---
 
