@@ -3,20 +3,24 @@
 > **[🔥 Live Case Study: The Local Agent Factory](https://olbin.dev/factory.html)**  
 > *cAgent is not just a theoretical tool. It is the exported control bus of a 100-developer scale, autonomous AI factory currently operating across physically connected Apple Silicon nodes (Thunderbolt IP).*
 
+![License](https://img.shields.io/badge/license-MIT-green)
+
 **A robust JSON-RPC integration layer for autonomous AI-to-AI orchestration in OpenClaw.**
+
+Part of the [olbin.dev](https://olbin.dev/) open toolkit family.
 
 This repository contains the patch and implementation for **cAgent**, bridging **AgentKit 2.0** with the **OpenClaw** daemon, completely bypassing the legacy CLI argument parsing that frequently causes `400 INVALID_ARGUMENT` errors during AI-driven local terminal interactions.
 
 In addition, it provides a critical patch for a known bug in OpenClaw's `Gateway` system where `Error` objects fail JSON serialization during plugin state saves, which traditionally causes the OpenClaw Gateway to crash or fail to launch as a background LaunchAgent.
 
-## 🚀 Features
+## Features
 
 - **AgentKit 2.0 Core Interface**: Replaces the CLI `process.argv` approach with a native, structured JSON-RPC API endpoint for direct payload injection.
 - **AgentKitToolAdapter**: Auto-sanitizes and encodes multi-line or complex JSON payloads sent by orchestrating agents (like Jules or Claude), guaranteeing strict type safety.
 - **Gateway Crash Fix (`plugin-state-store` patch)**: A direct patch to OpenClaw's internal SQLite state manager to gracefully handle non-serializable objects (like `Error` instances) emitted by failing plugins (e.g., `spotify-player` or `voice-call`), ensuring the daemon remains stable 24/7.
 - **Daemonization Bypass**: Guidelines for ensuring `launchd` security constraints on macOS do not silently block WebSocket (`ws://127.0.0.1:18789`) orchestration channels.
 
-## ⚙️ Installation / Applying the Patch
+## Installation / Applying the Patch
 
 To inject this bridge into your local OpenClaw source repository:
 
@@ -25,6 +29,7 @@ To inject this bridge into your local OpenClaw source repository:
 3. Apply the JSON-Serialization patch to `src/plugin-state/plugin-state-store.ts` (detailed below).
 
 ### The Gateway Crash Fix
+
 In `openclaw_source/src/plugin-state/plugin-state-store.ts`, locate `assertPlainJsonValue` and modify:
 
 ```typescript
@@ -40,7 +45,7 @@ In `openclaw_source/src/plugin-state/plugin-state-store.ts`, locate `assertPlain
     }
 ```
 
-## 🌐 Usage (Autonomous Operation)
+## Usage (Autonomous Operation)
 
 Once built (`pnpm build`), you can run the gateway in background persistence mode:
 
@@ -52,4 +57,31 @@ node scripts/run-node.mjs gateway --port 18789
 With the Gateway active, external AI agents can dispatch instructions to OpenClaw using standard HTTP REST or WebSocket requests conforming to the AgentKit 2.0 schema, enabling fully autonomous **Office 2.0** or **Prometheus-OS** local orchestration topologies.
 
 ---
-*Maintained by the SS-FIA Engineering Team.*
+
+## Data & Privacy
+
+- Designed for **local-first** orchestration (`ws://127.0.0.1:18789` / LAN nodes)
+- No olbin.dev cloud relay is required for operation
+- You control which machines and daemons receive AgentKit payloads
+
+---
+
+## Related projects ([olbin.dev](https://olbin.dev/))
+
+| Project | Role |
+|---------|------|
+| [cAgent](https://github.com/olbin-dev/cAgent) | OpenClaw ↔ AgentKit JSON-RPC bridge *(this repo)* — [case study](https://olbin.dev/factory.html) |
+| [Vault Sync for Dropbox](https://github.com/olbin-dev/plugin) | Obsidian ↔ Dropbox bidirectional sync (iOS-ready) |
+| [Local LLM Brain Chat](https://github.com/olbin-dev/obisidian-Plugin-LocalLLM) | Obsidian ↔ local llama.cpp chat |
+
+---
+
+## License
+
+MIT
+
+---
+
+Maintained by **[olbin.dev](https://olbin.dev/)** / SS-FIA Engineering Team.
+
+Feedback and bug reports: [GitHub Issues](https://github.com/olbin-dev/cAgent/issues).
